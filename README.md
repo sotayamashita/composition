@@ -32,10 +32,9 @@ Once included, simply @import the CSS like [postcss-import](https://github.com/p
 ```
 
 
-## [Can I use](http://caniuse.com/#feat=css-grid) (as of 24 March, 2016)
+## Can I use
 
-* Google Chrome Canary
-* [Firefox Nightly](https://developer.mozilla.org/en-US/Firefox/Releases/45#css)
+<p class="ciu_embed" data-feature="css-grid" data-periods="future_3,future_2,future_1,current,past_1,past_2,past_3,past_4,past_5">   <a href="http://caniuse.com/#feat=css-grid">Can I Use css-grid?</a> Data on support for the css-grid feature across the major browsers from caniuse.com. </p>
 
 
 ## References
