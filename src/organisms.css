@@ -1,0 +1,30 @@
+/**
+ * header
+ */
+.o-header {
+  background:#fafafa;
+  border-bottom:1px solid #eee;
+}
+
+.o-header__top {
+  display: flex;
+  padding: 20px 0;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.o-header__bottom {
+  padding: 40px 0;
+}
+
+/**
+ * footer
+ */
+.o-footer {
+  background: #424242;
+  padding: 20px;
+  .o-footer__title {
+    color: #fff;
+    user-select: none;
+  }
+}

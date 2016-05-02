@@ -1,0 +1,32 @@
+.l-hg__container {
+  background: rgba(255, 153, 0, .5);
+}
+
+.l-hg {
+  background: #fff;
+  min-height: 600px;
+}
+
+.l-hg__header {
+  padding: 10px;
+  border-bottom: 2px solid #ea5959;
+}
+
+.l-hg__main {
+  padding: 10px;
+}
+
+.l-hg__left {
+  padding: 10px;
+  border-right: 2px solid #ff9900;
+}
+
+.l-hg__right {
+  padding: 10px;
+  border-left: 2px solid #ff9900;
+}
+
+.l-hg__footer {
+  padding: 10px;
+  border-top: 2px solid #ff9900;
+}

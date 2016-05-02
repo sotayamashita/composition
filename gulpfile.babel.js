@@ -1,18 +1,16 @@
+'use strict';
+
 import gulp from 'gulp';
+import browserSync from 'browser-sync';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
+const reload = browserSync.reload;
 
 // Build
 
-
-
-gulp.task('build', () => {
-  let autoprefixer = require('autoprefixer');
-  let reporter = require('postcss-reporter');
-  let cssnano = require('cssnano');
-
-  const autoprefixerBrowsers = [
+gulp.task('styles', () => {
+  const AUTOPREFIXER_BROWSERS = [
     'ie >= 10',
     'ie_mob >= 10',
     'ff >= 30',
@@ -24,23 +22,40 @@ gulp.task('build', () => {
     'bb >= 10'
   ];
 
-  const processors = [
-    autoprefixer(autoprefixerBrowsers),
-    reporter({ clearMessages: true })
+  const PROCESSORS = [
+    require('postcss-import')(),
+    require('postcss-extend')(),
+    require('postcss-nested')(),
+    require('postcss-apply')(),
+    require("postcss-custom-properties")(),
+    require('autoprefixer')(AUTOPREFIXER_BROWSERS),
+    require('postcss-reporter')({ clearMessages: true })
   ];
 
-  const errorHandler = err => {
-    $.util.log($.util.colors.red(`Error (${err.plugin}): ${err.message}`));
-  };
-
-  return gulp.src('./src/composition.css')
-    .pipe($.plumber({ errorHandler }))
-    .pipe($.newer('dist'))
-    .pipe($.postcss(processors))
-    .pipe($.license('MIT', {tiny: true}))
-    .pipe(gulp.dest('dist'))
-    .pipe($.if('*.css', $.postcss([ cssnano({discardComments: {removeAll: true} })])))
-    .pipe($.size({title: 'styles'}))
+  return gulp.src('./src/main.css')
+    .pipe($.postcss(PROCESSORS))
+    .pipe(gulp.dest('dest'))
+    .pipe($.if('*.css', $.postcss([
+      require('cssnano')({discardComments: {removeAll: true} })
+    ])))
     .pipe($.rename({suffix: ".min"}))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dest'))
+    .pipe(gulp.dest('app'));
+});
+
+// Watch files for changes & reload
+gulp.task('serve', ['styles'], () => {
+  browserSync({
+    notify: false,
+    // Customize the Browsersync console logging prefix
+    logPrefix: 'WSK',
+    // Allow scroll syncing across breakpoints
+    scrollElementMapping: ['main', '.mdl-layout'],
+
+    server: ['.tmp', 'app'],
+    port: 3000
+  });
+
+  gulp.watch(['app/index.html'], reload);
+  gulp.watch(['src/**/*.css'], ['styles', reload]);
 });

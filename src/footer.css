@@ -1,0 +1,15 @@
+.c-footer {
+  padding: 14px 0 10px;
+  background: #424242;
+}
+
+.c-footer__content {
+  display: flex;
+  align-items: center;
+}
+
+.c-footer__copyright {
+  color: rgb(158, 158, 158);
+  font-size: 14px;
+  user-select: none;
+}

@@ -1,0 +1,12 @@
+.global-more {
+  background: #eef1f3;
+  padding: 40px 0;
+}
+
+.global-more__title {
+  margin-bottom: 20px;
+}
+
+.global-more__nav {
+  list-style-type: none;
+}

@@ -1,0 +1,40 @@
+.global-header {
+  background:#fafafa;
+  border-bottom:1px solid #eee
+}
+
+.global-header__section {
+  align-items:center;
+  padding:18px 0
+}
+
+.global-header__top {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.global-header__content {
+  display: flex;
+  align-items: center;
+  padding: 18px 0
+}
+
+.global-header__content__title {
+  font-size: 21px;
+  font-weight: 400;
+  font-family: Lato, sans-serif;
+  color: rgba(0,0,0,0.8);
+}
+
+.global-header__nav {
+  list-style-type: none;
+  li {
+    display: inline-block;
+  }
+}
+
+.global-header__bottom {
+  padding:40px 0
+}
